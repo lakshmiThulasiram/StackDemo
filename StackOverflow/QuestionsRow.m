@@ -83,6 +83,9 @@
     int offsetY=0;
     int labelHgt = 20;
     int i=0;
+    for (UIView *view in self.viewTagHolder.subviews) {
+        [view removeFromSuperview];
+    }
     for(NSString *title in tags)
     {
         float labelWidth = [title sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(9999,9999)].width;
@@ -91,18 +94,15 @@
             offsetX = 5;
             offsetY += labelHgt;
         }
-        UILabel *label = (UILabel *)[self viewWithTag:TAG_BASE +i];
-        if(!label)
-        {
-            label= [[UILabel alloc] init];
-            label.font = [UIFont systemFontOfSize:13];
-            label.layer.backgroundColor = [UIColor lightGrayColor].CGColor;
-            label.layer.cornerRadius = 2.0f;
-            label.tag = TAG_BASE +i;
-            [self.viewTagHolder addSubview:label];
+        
 
+        UILabel *label= [[UILabel alloc] init];
+        label.font = [UIFont systemFontOfSize:13];
+        label.layer.backgroundColor = [UIColor lightGrayColor].CGColor;
+        label.layer.cornerRadius = 2.0f;
+        label.tag = TAG_BASE +i;
+        [self.viewTagHolder addSubview:label];
 
-        }
         label.frame =CGRectMake(offsetX, offsetY, labelWidth, labelHgt);
         label.text = title;
         

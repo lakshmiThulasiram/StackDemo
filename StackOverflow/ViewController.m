@@ -82,7 +82,7 @@
 
 -(void)handleResponse:(Response *)response
 {
-    self.qnView.userInteractionEnabled = NO;
+    self.qnView.userInteractionEnabled = YES;
     self.qnView.alpha = 1.0f;
     
     if([response.serviceName isEqualToString:@"questions"])
